@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.ck-jesse</groupId>
+    <groupId>io.github.keveboot</groupId>
     <artifactId>l2cache</artifactId>
     <name>l2cache</name>
     <version>1.0.39</version>
@@ -27,7 +27,6 @@
 
         <!-- dependencies -->
         <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
-        <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
         <caffeine.version>2.8.4</caffeine.version>
         <guava.version>32.1.2-jre</guava.version>
         <redisson.version>3.13.0</redisson.version>
@@ -49,15 +48,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- spring-cloud -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <dependency>
                 <groupId>com.github.ben-manes.caffeine</groupId>
                 <artifactId>caffeine</artifactId>
@@ -73,6 +63,12 @@
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
             </dependency>
 
@@ -103,21 +99,21 @@
 
             <!-- l2cache-core -->
             <dependency>
-                <groupId>io.github.ck-jesse</groupId>
+                <groupId>io.github.keveboot</groupId>
                 <artifactId>l2cache-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- l2cache-spring-boot-starter -->
             <dependency>
-                <groupId>io.github.ck-jesse</groupId>
+                <groupId>io.github.keveboot</groupId>
                 <artifactId>l2cache-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- jd-hotkey-client -->
             <dependency>
-                <groupId>io.github.ck-jesse</groupId>
+                <groupId>io.github.keveboot</groupId>
                 <artifactId>jd-hotkey-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -226,9 +222,9 @@
 
     <!-- SCM信息，可以理解为托管信息，我这里在github上托管 -->
     <scm>
-        <connection>scm:https://github.com/ck-jesse/l2cache.git</connection>
-        <developerConnection>scm:https://github.com/ck-jesse/l2cache.git</developerConnection>
-        <url>https://github.com/ck-jesse/l2cache.git</url>
+        <connection>scm:https://github.com/keveboot/l2cache.git</connection>
+        <developerConnection>scm:https://github.com/keveboot/l2cache.git</developerConnection>
+        <url>https://github.com/keveboot/l2cache.git</url>
     </scm>
 
     <profiles>

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>l2cache</artifactId>
-        <groupId>io.github.ck-jesse</groupId>
+        <groupId>io.github.keveboot</groupId>
         <version>1.0.39</version>
     </parent>
 
@@ -20,7 +20,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>io.github.ck-jesse</groupId>
+            <groupId>io.github.keveboot</groupId>
             <artifactId>l2cache-spring-boot-starter</artifactId>
         </dependency>
 
@@ -38,7 +38,7 @@
         <!-- redisson -->
         <dependency>
             <groupId>org.redisson</groupId>
-            <artifactId>redisson</artifactId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
         </dependency>
 
         <!-- kafka -->

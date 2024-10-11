@@ -8,7 +8,7 @@
         <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>io.github.ck-jesse</groupId>
+    <groupId>io.github.keveboot</groupId>
     <artifactId>jd-hotkey-dashboard</artifactId>
     <version>1.0.39</version>
     <name>jd-hotkey-dashboard</name>
@@ -57,7 +57,7 @@
         </dependency>
 
         <dependency>
-            <groupId>io.github.ck-jesse</groupId>
+            <groupId>io.github.keveboot</groupId>
             <artifactId>jd-hotkey-common</artifactId>
             <version>1.0.39</version>
             <scope>compile</scope>

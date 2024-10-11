@@ -1,6 +1,6 @@
 # 一、集成Spring项目
 
-> 已部署到中央仓库，最新版本号见： [l2cache mvnrepository](https://mvnrepository.com/artifact/io.github.ck-jesse/l2cache-core)
+> 已部署到中央仓库，最新版本号见： [l2cache mvnrepository](https://mvnrepository.com/artifact/io.github.keveboot/l2cache-core)
 
 ## 1、启动L2cache
 
@@ -10,19 +10,20 @@
 引入jar包 `l2cache-spring-boot-starter` 即可
 ```xml
 <dependency>
-    <groupId>io.github.ck-jesse</groupId>
+    <groupId>io.github.keveboot</groupId>
     <artifactId>l2cache-spring-boot-starter</artifactId>
     <version>x.x.x</version>
 </dependency>
 ```
 
-- 常见问题：在项目中引入l2cache后，项目启动失败。
+- 旧版本常见问题：在项目中引入l2cache后，项目启动失败。
 - 原因分析：由于项目和l2cache中依赖的spring相关包版本不一致，导致启动失败。
 - 解决方案：建议排除掉l2cache中的依赖，使用项目中的版本。
+- 新版本已将spring相关依赖的scope设置为provided，避免了依赖冲突问题。
 
 ```xml
 <dependency>
-    <groupId>io.github.ck-jesse</groupId>
+    <groupId>io.github.keveboot</groupId>
     <artifactId>l2cache-spring-boot-starter</artifactId>
     <version>x.x.x</version>
     <exclusions>
@@ -40,7 +41,7 @@
 
 
 ## 2、Spring配置
-具体代码示例参考：[l2cache](https://github.com/ck-jesse/l2cache) 中的 `l2cache-example` 模块。
+具体代码示例参考：[l2cache](https://github.com/keveboot/l2cache) 中的 `l2cache-example` 模块。
 
 ```yaml
 spring:
@@ -147,6 +148,46 @@ l2cache:
       # #etcd的地址，如有多个用逗号分隔
       # etcdUrl: http://127.0.0.1:2379
 
+```
+
+**Redisson和Spring集成**
+
+参考: [Integration with Spring - Redisson Reference Guide](https://redisson.org/docs/integration-with-spring/)
+
+可以不指定 `l2cache.config.redis.redissonYamlConfig` 而是使用通用的配置
+
+需要引入 `redisson-spring-boot-starter` 依赖无缝替换掉 `spring-boot-starter-data-redis`
+```xml
+<dependency>
+    <groupId>org.redisson</groupId>
+    <artifactId>redisson-spring-boot-starter</artifactId>
+</dependency>
+<!--注释掉原有的spring-boot-starter-data-redis-->
+<!--
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+-->
+```
+Spring Boot 2 通用配置
+```yaml
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+```
+Spring Boot 3 通用配置
+```yaml
+spring:
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+      database: 0
 ```
 
 注：
@@ -260,7 +301,7 @@ l2cache:
 ```
 
 ### 5、缓存同步策略配置
-详细配置见：[缓存同步策略配置](https://github.com/ck-jesse/l2cache/blob/master/doc/%E7%BC%93%E5%AD%98%E5%90%8C%E6%AD%A5%E7%AD%96%E7%95%A5%E9%85%8D%E7%BD%AE%E6%A0%B7%E4%BE%8B.md)
+详细配置见：[缓存同步策略配置](https://github.com/keveboot/l2cache/blob/master/doc/%E7%BC%93%E5%AD%98%E5%90%8C%E6%AD%A5%E7%AD%96%E7%95%A5%E9%85%8D%E7%BD%AE%E6%A0%B7%E4%BE%8B.md)
 ```yaml
 l2cache:
   config:
@@ -277,7 +318,7 @@ l2cache:
 - 2）利用Redis的pubsub的特性，在消费者重启时，无需处理重启之前的消息，避免做无用功
 
 
-- **2、Redis的pubsub有和特性？**
+- **2、Redis的pubsub有何特性？**
 - 两个特性：1、Redis消息不持久化，2、生产者发送一个消息，如果没有消费者，消息将会被直接丢弃。
 - 由于缓存的使用要求是不强求保证强一致性，只需保证最终一致性即可。因此刚好利用上面两个特性，当某个消费者重启时，正好无需去处理那些重启之前的消息，消息丢了就丢了，对本地缓存无影响。因为请求进来时，会再从redis中获取缓存信息并缓存到本地缓存。
 

@@ -1,6 +1,6 @@
 # L2Cache 分布式二级缓存框架
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.ck-jesse/l2cache-core?color=green)](https://search.maven.org/search?q=g:io.github.ck-jesse%20AND%20a:l2cache-core)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.keveboot/l2cache-core?color=green)](https://search.maven.org/search?q=g:io.github.keveboot%20AND%20a:l2cache-core)
 [![Crates.io](https://img.shields.io/crates/l/ap)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 # 一、简介
@@ -10,7 +10,7 @@ L2Cache 是一个基于`内存`、 `Redis` 、 `Spring Cache` 实现的满足高
 L2Cache 并没有重复造轮子，它只是将目前市面上比较成熟、经得起考验的框架组合起来，封装屏蔽了复杂的缓存操作和实现原理，最终给开发者留出了一个简单易懂和易维护的分布式缓存开发工具。
 
 # 二、如何使用
-- [如何使用L2Cache](https://blog.csdn.net/icansoicrazy/article/details/125097730)
+- [如何使用L2Cache](https://github.com/keveboot/l2cache/blob/master/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8L2cache.md)
 
 # 三、核心原理
 - [L2Cache核心原理解析](https://blog.csdn.net/icansoicrazy/article/details/131959016)

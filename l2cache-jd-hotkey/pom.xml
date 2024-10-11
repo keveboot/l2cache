@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>l2cache</artifactId>
-        <groupId>io.github.ck-jesse</groupId>
+        <groupId>io.github.keveboot</groupId>
         <version>1.0.39</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>

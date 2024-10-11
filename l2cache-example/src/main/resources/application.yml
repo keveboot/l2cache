@@ -11,6 +11,11 @@ logging:
 spring:
   application:
     name: l2cache-example
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
 
 # 二级缓存配置
 # 注：caffeine 不适用于数据量大，并且缓存命中率极低的业务场景，如用户维度的缓存。请慎重选择。
@@ -106,7 +111,7 @@ l2cache:
       expireTimeCacheNameMap:
         brandCache: 86400000
       # Redisson 的yaml配置文件
-      redissonYamlConfig: redisson.yaml
+      #redissonYamlConfig: redisson.yaml
     # 缓存同步策略配置
     cacheSyncPolicy:
       # 策略类型 kafka / redis，推荐使用redis

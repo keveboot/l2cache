@@ -4,8 +4,10 @@ import com.github.jesse.l2cache.Cache;
 import com.github.jesse.l2cache.exception.L2CacheException;
 import com.github.jesse.l2cache.spring.cache.L2CacheCacheManager;
 import com.github.jesse.l2cache.util.ServiceResult;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author chenck
  * @date 2021/8/13 17:33
  */
+@Tag(name = "L2Cache缓存管理")
 @Slf4j
 @RestController
 @RequestMapping(value = "/l2cache/manager")
@@ -42,7 +45,7 @@ public class CacheManagerController {
     /**
      * 获取缓存名字列表
      */
-    @RequestMapping(value = "/getCacheNames")
+    @PostMapping(value = "/getCacheNames")
     public ServiceResult getCacheNames() {
         return ServiceResult.succ(l2CacheCacheManager.getCacheNames());
     }
@@ -50,7 +53,7 @@ public class CacheManagerController {
     /**
      * 获取缓存配置
      */
-    @RequestMapping(value = "/getCacheConfig")
+    @PostMapping(value = "/getCacheConfig")
     public ServiceResult getCacheConfig(String cacheName) {
         return ServiceResult.succ(this.getCache(cacheName));
     }
@@ -58,7 +61,7 @@ public class CacheManagerController {
     /**
      * 获取缓存
      */
-    @RequestMapping(value = "/get")
+    @PostMapping(value = "/get")
     public ServiceResult get(String cacheName, String key) {
         return ServiceResult.succ(this.getCache(cacheName).get(key));
     }
@@ -68,7 +71,7 @@ public class CacheManagerController {
      * 清理缓存
      * 注：先删除redis，然后再删除本地缓存
      */
-    @RequestMapping(value = "/evict")
+    @PostMapping(value = "/evict")
     public ServiceResult evict(String cacheName, String key) {
         this.getCache(cacheName).evict(key);
         return ServiceResult.succ();

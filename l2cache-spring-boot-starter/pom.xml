@@ -29,6 +29,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- 使用注释处理器生成自己的元数据 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -43,5 +49,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>

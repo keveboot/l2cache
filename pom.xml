@@ -35,6 +35,7 @@
         <junit.version>4.13.1</junit.version>
         <hutool.version>5.8.17</hutool.version>
         <sentinel.version>1.8.5</sentinel.version>
+        <swagger-annotations.version>2.2.20</swagger-annotations.version>
     </properties>
 
     <dependencyManagement>
@@ -123,6 +124,12 @@
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-parameter-flow-control</artifactId>
                 <version>${sentinel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
             </dependency>
 
         </dependencies>
